@@ -12,6 +12,25 @@ header {
     text-align: center;
 }
 
+.hero-section {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+}
+
+.hero-section .btn {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -79,4 +98,13 @@ form button:hover {
 
 h1, h2, h5 {
     font-family: 'Roboto', sans-serif;
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
