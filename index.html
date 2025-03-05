@@ -32,14 +32,49 @@
         </section>
         <section id="features" class="mb-5">
             <h2 data-en="Features" data-el="Χαρακτηριστικά">Features</h2>
-            <ul class="list-group">
-                <li class="list-group-item" data-en="Weather forecasts and alerts" data-el="Προγνώσεις και ειδοποιήσεις καιρού">Weather forecasts and alerts</li>
-                <li class="list-group-item" data-en="Crop and soil monitoring" data-el="Παρακολούθηση καλλιεργειών και εδάφους">Crop and soil monitoring</li>
-                <li class="list-group-item" data-en="Inventory management" data-el="Διαχείριση αποθεμάτων">Inventory management</li>
-                <li class="list-group-item" data-en="Equipment management" data-el="Διαχείριση εξοπλισμού">Equipment management</li>
-                <li class="list-group-item" data-en="Financial management" data-el="Διαχείριση οικονομικών">Financial management</li>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Weather forecasts and alerts" data-el="Προγνώσεις και ειδοποιήσεις καιρού">Weather forecasts and alerts</h5>
+                            <p class="card-text" data-en="Stay updated with the latest weather forecasts and alerts to plan your farming activities." data-el="Μείνετε ενημερωμένοι με τις τελευταίες προγνώσεις και ειδοποιήσεις καιρού για να προγραμματίσετε τις αγροτικές σας δραστηριότητες.">Stay updated with the latest weather forecasts and alerts to plan your farming activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Crop and soil monitoring" data-el="Παρακολούθηση καλλιεργειών και εδάφους">Crop and soil monitoring</h5>
+                            <p class="card-text" data-en="Monitor the health of your crops and soil to ensure optimal growth and yield." data-el="Παρακολουθήστε την υγεία των καλλιεργειών και του εδάφους σας για να εξασφαλίσετε βέλτιστη ανάπτυξη και απόδοση.">Monitor the health of your crops and soil to ensure optimal growth and yield.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Inventory management" data-el="Διαχείριση αποθεμάτων">Inventory management</h5>
+                            <p class="card-text" data-en="Keep track of your inventory to manage supplies and reduce waste." data-el="Παρακολουθήστε τα αποθέματά σας για να διαχειριστείτε τις προμήθειες και να μειώσετε τα απόβλητα.">Keep track of your inventory to manage supplies and reduce waste.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Equipment management" data-el="Διαχείριση εξοπλισμού">Equipment management</h5>
+                            <p class="card-text" data-en="Manage your farming equipment to ensure it is always in good working condition." data-el="Διαχειριστείτε τον αγροτικό σας εξοπλισμό για να εξασφαλίσετε ότι είναι πάντα σε καλή κατάσταση λειτουργίας.">Manage your farming equipment to ensure it is always in good working condition.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Financial management" data-el="Διαχείριση οικονομικών">Financial management</h5>
+                            <p class="card-text" data-en="Keep track of your finances to make informed decisions and maximize profitability." data-el="Παρακολουθήστε τα οικονομικά σας για να λαμβάνετε ενημερωμένες αποφάσεις και να μεγιστοποιήσετε την κερδοφορία.">Keep track of your finances to make informed decisions and maximize profitability.</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Add more features as needed -->
-            </ul>
+            </div>
         </section>
         <section id="pricing" class="mb-5">
             <h2 data-en="Pricing" data-el="Τιμολόγηση">Pricing</h2>
@@ -67,19 +102,6 @@
     <footer class="bg-dark text-white text-center p-3">
         <p data-en="&copy; 2025 Agrotis360. All rights reserved." data-el="&copy; 2025 Agrotis360. Με επιφύλαξη παντός δικαιώματος.">&copy; 2025 Agrotis360. All rights reserved.</p>
     </footer>
-    <script>
-        function setLanguage(language) {
-            document.querySelectorAll('[data-en]').forEach(element => {
-                element.innerText = element.getAttribute(`data-${language}`);
-            });
-        }
-
-        // Set default language based on browser's language
-        document.addEventListener('DOMContentLoaded', () => {
-            const userLang = navigator.language || navigator.userLanguage;
-            const defaultLang = userLang.startsWith('el') ? 'el' : 'en';
-            setLanguage(defaultLang);
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
