@@ -13,15 +13,20 @@
         <div class="container">
             <h1 class="font-weight-bold">Agrotis360</h1>
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-                <div id="language-switcher" class="ml-auto">
-                    <button class="btn btn-light" onclick="setLanguage('en')">English</button>
-                    <button class="btn btn-light" onclick="setLanguage('el')">Ελληνικά</button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    <div id="language-switcher" class="ml-auto">
+                        <button class="btn btn-light d-none" id="btn-en" onclick="setLanguage('en')">English</button>
+                        <button class="btn btn-light d-none" id="btn-el" onclick="setLanguage('el')">Ελληνικά</button>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -103,6 +108,9 @@
     <footer class="bg-dark text-white text-center p-3">
         <p data-en="&copy; 2025 Agrotis360. All rights reserved." data-el="&copy; 2025 Agrotis360. Με επιφύλαξη παντός δικαιώματος.">&copy; 2025 Agrotis360. All rights reserved.</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

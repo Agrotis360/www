@@ -2,6 +2,8 @@ function setLanguage(language) {
     document.querySelectorAll('[data-en]').forEach(element => {
         element.innerText = element.getAttribute(`data-${language}`);
     });
+    document.getElementById('btn-en').classList.toggle('d-none', language === 'en');
+    document.getElementById('btn-el').classList.toggle('d-none', language === 'el');
 }
 
 // Set default language based on browser's language
