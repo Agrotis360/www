@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrotis360 - Dashboard for Farmers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Agrotis360</h1>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="language-switcher">
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('el')">Ελληνικά</button>
+        </div>
+    </header>
+    <main>
+        <section id="overview">
+            <h2 data-en="Executive Summary" data-el="Εκτελεστική Περίληψη">Executive Summary</h2>
+            <p data-en="Our dashboard for farmers is a comprehensive platform that provides farmers with the tools and information they need to manage their farms more efficiently and effectively..." data-el="Η πλατφόρμα μας για τους αγρότες είναι μια ολοκληρωμένη πλατφόρμα που παρέχει στους αγρότες τα εργαλεία και τις πληροφορίες που χρειάζονται για να διαχειρίζονται τις φάρμες τους πιο αποτελεσματικά και αποδοτικά...">Our dashboard for farmers is a comprehensive platform that provides farmers with the tools and information they need to manage their farms more efficiently and effectively...</p>
+        </section>
+        <section id="features">
+            <h2 data-en="Features" data-el="Χαρακτηριστικά">Features</h2>
+            <ul>
+                <li data-en="Weather forecasts and alerts" data-el="Προγνώσεις και ειδοποιήσεις καιρού">Weather forecasts and alerts</li>
+                <li data-en="Crop and soil monitoring" data-el="Παρακολούθηση καλλιεργειών και εδάφους">Crop and soil monitoring</li>
+                <li data-en="Inventory management" data-el="Διαχείριση αποθεμάτων">Inventory management</li>
+                <li data-en="Equipment management" data-el="Διαχείριση εξοπλισμού">Equipment management</li>
+                <li data-en="Financial management" data-el="Διαχείριση οικονομικών">Financial management</li>
+                <!-- Add more features as needed -->
+            </ul>
+        </section>
+        <section id="pricing">
+            <h2 data-en="Pricing" data-el="Τιμολόγηση">Pricing</h2>
+            <p data-en="Our platform is subscription-based, with different pricing plans to suit the needs of different farmers..." data-el="Η πλατφόρμα μας βασίζεται σε συνδρομή, με διαφορετικά σχέδια τιμολόγησης για να καλύψει τις ανάγκες διαφορετικών αγροτών...">Our platform is subscription-based, with different pricing plans to suit the needs of different farmers...</p>
+        </section>
+        <section id="contact">
+            <h2 data-en="Contact Us" data-el="Επικοινωνήστε μαζί μας">Contact Us</h2>
+            <form>
+                <label for="name" data-en="Name:" data-el="Όνομα:">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email" data-en="Email:" data-el="Ηλεκτρονικό ταχυδρομείο:">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message" data-en="Message:" data-el="Μήνυμα:">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" data-en="Submit" data-el="Υποβολή">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p data-en="&copy; 2025 Agrotis360. All rights reserved." data-el="&copy; 2025 Agrotis360. Με επιφύλαξη παντός δικαιώματος.">&copy; 2025 Agrotis360. All rights reserved.</p>
+    </footer>
+    <script>
+        function setLanguage(language) {
+            document.querySelectorAll('[data-en]').forEach(element => {
+                element.innerText = element.getAttribute(`data-${language}`);
+            });
+        }
+    </script>
+</body>
+</html>
