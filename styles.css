@@ -1,110 +1,331 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f4f1ea;
+    color: #333;
 }
 
 header {
-    background-color: #2E8B57; /* Changed to a meaningful color */
-    color: white;
-    padding: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center;
+    background: #4CAF50;
+    padding: 15px;
+    position: relative; /* Add relative positioning */
 }
 
-.hero-section {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    padding: 100px 0;
-}
-
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.hero-section p {
-    font-size: 1.5rem;
-}
-
-.hero-section .btn {
-    font-size: 1.25rem;
-    padding: 0.75rem 1.5rem;
+.logo {
+    width: 8.5em;
+    position: absolute; /* Position the logo absolutely */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for the logo's width */
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Push navigation to the right */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 1rem;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 2rem;
-}
-
-section {
-    margin-bottom: 2rem;
-}
-
-footer {
-    background-color: #333;
     color: white;
+    font-weight: bold;
+}
+
+.hero {
     text-align: center;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    padding: 50px 20px;
+    background: url('./hero.webp') no-repeat center/cover;
+    color: white;
 }
 
-form {
+.hero h1 {
+    font-size: 2.5em;
+}
+
+.btn {
+    background: #8B5A2B;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#services, #contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+#contact {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f4f1ea;
+}
+
+.contact-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: 20px;
 }
 
-form label {
-    margin-top: 1rem;
+.contact-form, .contact-info {
+    background: white;
+    padding: 20px;
+    width: 45%;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-form:hover, .contact-info:hover {
+    transform: scale(1.03);
+}
+
+.contact-form h3, .contact-info h3 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* ✅ Responsive για κινητά */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form, .contact-info {
+        width: 90%;  /* Παίρνει όλο το διαθέσιμο πλάτος */
+        text-align: center;
+    }
+
+    .contact-info p {
+        text-align: center;  /* Στοίχιση στο κέντρο για mobile */
+    }
+
+    nav{
+        display: none;
+    }
+}
+
+
+.service {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 form input, form textarea {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    text-align: center;
 }
 
-form button {
-    margin-top: 1rem;
-    padding: 0.5rem;
-    background-color: #2E8B57; /* Changed to a meaningful color */
+button {
+    background: #4CAF50;
     color: white;
     border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #3CB371; /* Changed to a meaningful color */
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px;
+}
+#pricing {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f4f1ea;
 }
 
-h1, h2, h5 {
-    font-family: 'Roboto', sans-serif;
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.feature-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.plan {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.feature-card:hover {
+.plan:hover {
+    transform: scale(1.05);
+}
+
+.plan h3 {
+    color: #4CAF50;
+    font-size: 1.5em;
+}
+
+.price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #8B5A2B;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plan ul li {
+    padding: 5px 0;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popular {
+    border: 2px solid #4CAF50;
+}
+@media (max-width: 768px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Modal (Pop-up) Στυλ */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#faq {
+    text-align: center;
+    padding: 50px 20px;
+    background: #ffffff;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    background: #f4f1ea;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: scale(1.02);
+}
+
+.faq-question {
+    width: 100%;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #45a049;
+}
+
+.faq-answer {
+    background: white;
+    color: #333;
+    padding: 15px;
+    display: none;
+    border-top: 1px solid #ddd;
+    opacity: 0;
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Ενεργό στοιχείο - Εφέ για άνοιγμα */
+.faq-answer.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Εφέ για το βελάκι */
+.arrow {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .faq-container {
+        width: 90%;
+    }
+
+    header{
+        padding: 40px;
+    }
+
+    .logo{
+        width: 7em;
+    }
 }
