@@ -71,21 +71,18 @@ nav ul li a {
 }
 
 .services-table {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Maximum of 4 columns per row */
-    gap: 20px; /* Space between grid items */
-    padding: 10px;
-}
-
-@media (max-width: 1200px) {
-    .services-table {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for smaller screens */
-    }
+    /* padding: 10px; */
+    display:flex;
+    flex-direction:row;
+    Justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
 }
 
 .services-table .service {
     max-width: 400px;
-    box-sizing: border-box;
+    width: 25%;
+    box-sizing:content-box;
 }
 
 #contact {
@@ -394,6 +391,11 @@ button {
     .logo{
         width: 7em;
         left: 5px;
+    }
+
+    .services-table .service{
+        width: 90%;
+        max-width: 100%;
     }
 }
 
