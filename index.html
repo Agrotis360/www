@@ -1,162 +1,476 @@
 <!DOCTYPE html>
 <html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GaiaLogica</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favico/apple-touch-icon.png">
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favico/favicon-32x32.png"
+        >
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favico/favicon-16x16.png"
+        >
+        <link rel="manifest" href="./assets/favico/site.webmanifest">
+        <link rel="stylesheet" href="./styles.css">
+        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+        <script>
+        window.document.addEventListener("DOMContentLoaded", function () {
+            // Set default language based on user's preference or system settings
+            const userLang = navigator.language || navigator.userLanguage;
+            const lang = userLang.startsWith("el") ? "el" : "en";
+            toggleLanguage(lang);
+        });
+      function toggleLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-lang]").forEach((el) => {
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GaiaLogica - Αγροτική Τεχνολογία</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+            if (el.className === "faq-question"){
+                el.style.display = el.dataset.lang === lang ? "flex" : "none";
+            }
+            else if (el.parentElement.className === "language-toggle"){
+                if (el.dataset.lang === lang){
+                    el.style.display = "";
+                }
+                else{
+                    el.style.display = "none";
+                }
+            }
+            else{
+                el.style.display = el.dataset.lang === lang ? "block" : "none";
+            }
 
-<body>
+        });
 
-    <header>
-        <img src="./logo.png" alt="GaiaLogica Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="#">Αρχική</a></li>
-                <li><a href="#services">Υπηρεσίες</a></li>
-                <li><a href="#pricing">Τιμολόγηση</a></li>
-                <li><a href="#contact">Επικοινωνία</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <h1>Καλώς ήρθατε στο GaiaLogica</h1>
-        <p>Η τεχνολογία στην υπηρεσία της γεωργίας!</p>
-        <a href="#services" class="btn">Μάθε Περισσότερα</a>
-    </section>
-
-    <section id="services">
-        <h2>Οι Υπηρεσίες μας</h2>
-        <div class="service">
-            <h3>Διαχείριση Καλλιεργειών</h3>
-            <p>Έξυπνη παρακολούθηση της σοδειάς σας.</p>
-        </div>
-        <div class="service">
-            <h3>Οικονομική Ανάλυση</h3>
-            <p>Αναλύστε έσοδα & έξοδα της επιχείρησής σας.</p>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <h2>Πλάνα Συνδρομών</h2>
-        <div class="pricing-container">
-            <div class="plan">
-                <h3>Βασικό</h3>
-                <p class="price">Δωρεάν</p>
+document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.display = "none"; });
+      }
+        </script>
+    </head>
+    <body>
+        <header>
+            <img src="./assets/logo1-no-bg.png" alt="GaiaLogica Logo" class="logo">
+            <nav>
                 <ul>
-                    <li>✔ Διαχείριση βασικών δεδομένων</li>
-                    <li>✔ Πρόσβαση μέσω web</li>
-                    <li>✖ Χωρίς advanced reports</li>
+                    <li>
+                        <a href="#" data-lang="el">Αρχική
+                        </a
+            >
+                        <a href="#" data-lang="en" style="display: none">Home</a>
+                    </li>
+                    <li>
+                        <a href="#services" data-lang="el">Υπηρεσίες
+                        </a
+            >
+                        <a href="#services" data-lang="en" style="display: none">Services
+                        </a
+            >
+                    </li>
+                    <li>
+                        <a href="#pricing" data-lang="el">Τιμολόγηση
+                        </a
+            >
+                        <a href="#pricing" data-lang="en" style="display: none">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#contact" data-lang="el">Επικοινωνία
+                        </a
+            >
+                        <a href="#contact" data-lang="en" style="display: none">Contact</a>
+                    </li>
                 </ul>
-                <button class="cta-button" data-plan="Βασικό">Ξεκινήστε</button>
+            </nav>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <!-- Language Toggle -->
+                <div class="language-toggle">
+                    <button data-lang="en" onclick="toggleLanguage('el')">Ελληνικά</button>
+                    <button data-lang="el" onclick="toggleLanguage('en')">English</button>
+                </div>
+                <a href="#pricing" class="login-signup" data-lang="el">Εγγραφή</a>
+                <a
+                    href="#pricing"
+                    class="login-signup"
+                    data-lang="en"
+                    style="display: none"
+                >Signup</a>
+                <a href="https://app.gaialogica.com/login" class="login-signup" data-lang="el">Σύνδεση</a>
+                <a
+                    href="https://app.gaialogica.com/login"
+                    class="login-signup"
+                    data-lang="en"
+                    style="display: none"
+                >Login</a>
             </div>
-
-            <div class="plan popular">
-                <h3>Επαγγελματικό</h3>
-                <p class="price">€19/μήνα</p>
-                <ul>
-                    <li>✔ Όλα από το βασικό</li>
-                    <li>✔ Αναλυτικά reports</li>
-                    <li>✔ Υποστήριξη πελατών</li>
-                </ul>
-                <button class="cta-button" data-plan="Επαγγελματικό">Επιλογή</button>
+        </header>
+        <section id="home" class="hero">
+            <h1 data-lang="el">Καλώς ήρθατε στο GaiaLogica</h1>
+            <h1 data-lang="en" style="display: none">Welcome to GaiaLogica</h1>
+            <p data-lang="el">Η τεχνολογία στην υπηρεσία της γεωργίας!</p>
+            <p data-lang="en" style="display: none">
+                Technology at the service of agriculture!
+            </p>
+            <a
+                class="learn-more"
+                href="#services"
+                class="btn"
+                data-lang="el"
+            >Μάθε Περισσότερα</a>
+            <a
+                class="learn-more"
+                href="#services"
+                class="btn"
+                data-lang="en"
+                style="display: none"
+            >Learn More
+            </a
+      >
+        </section>
+        <section id="services">
+            <h2 data-lang="el">Οι Υπηρεσίες μας</h2>
+            <h2 data-lang="en" style="display: none">Our Services</h2>
+            <div class="services-table">
+                <div class="service">
+                    <h3 data-lang="el">Διαχείριση Καλλιεργειών</h3>
+                    <h3 data-lang="en" style="display: none">Crop Management</h3>
+                    <p data-lang="el">Έξυπνη παρακολούθηση της σοδειάς σας.</p>
+                    <p data-lang="en" style="display: none">
+                        Smart monitoring of your crops.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Οικονομική Ανάλυση</h3>
+                    <h3 data-lang="en" style="display: none">Financial Analysis</h3>
+                    <p data-lang="el">Αναλύστε έσοδα & έξοδα της επιχείρησής σας.</p>
+                    <p data-lang="en" style="display: none">
+                        Analyze your business's income & expenses.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Ενημερώσεις</h3>
+                    <h3 data-lang="en" style="display: none">News</h3>
+                    <p data-lang="el">Ενημερώσεις για τη γεωργία, βέλτιστες πρακτικές, τάσεις της αγοράς, κυβερνητικές πολιτικές.</p>
+                    <p data-lang="en" style="display: none">
+                        Agricultural updates, best practices, market trends, government policies.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Τιμές</h3>
+                    <h3 data-lang="en" style="display: none">Prices</h3>
+                    <p data-lang="el">Πραγματικά δεδομένα αγοράς για τις τιμές των προϊόντων σας.</p>
+                    <p data-lang="en" style="display: none">
+                        Real-time market data for your product prices.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Σύστημα Ειδοποιήσεων</h3>
+                    <h3 data-lang="en" style="display: none">Notifications System</h3>
+                    <p data-lang="el">Ειδοποιήσεις για καιρικές συνθήκες, υγεία καλλιεργειών, οικονομικές ενημερώσεις.</p>
+                    <p data-lang="en" style="display: none">
+                        Alerts for weather, crop health, financial updates.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Πιστοποιήσεις ISO</h3>
+                    <h3 data-lang="en" style="display: none">ISO Certificates</h3>
+                    <p data-lang="el">Παρακολούθηση συμμόρφωσης, ειδοποιήσεις ανανέωσης, διαχείριση εγγράφων.</p>
+                    <p data-lang="en" style="display: none">
+                        Compliance tracking, renewal alerts, documentation management.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Διαχείριση Αποθεμάτων</h3>
+                    <h3 data-lang="en" style="display: none">Inventory Management</h3>
+                    <p data-lang="el">Παρακολούθηση αποθεμάτων καλλιεργειών, απογραφή εξοπλισμού, κατανομή πόρων.</p>
+                    <p data-lang="en" style="display: none">
+                        Crop stock tracking, equipment inventory, resource allocation.
+                    </p>
+                </div>
+                <div class="service coming-soon">
+                    <h3 data-lang="el">Προηγμένα Στατιστικά</h3>
+                    <h3 data-lang="en" style="display: none">Advanced Stats</h3>
+                    <p data-lang="el">Αναλυτική παρακολούθηση δεδομένων και στατιστικών για τη γεωργική σας παραγωγή.</p>
+                    <p data-lang="en" style="display: none">
+                        Detailed tracking of data and statistics for your agricultural production.
+                    </p>
+                </div>
             </div>
-
-            <div class="plan">
-                <h3>Enterprise</h3>
-                <p class="price">Επικοινωνήστε μαζί μας</p>
-                <ul>
-                    <li>✔ Προσαρμοσμένες λύσεις</li>
-                    <li>✔ API πρόσβαση</li>
-                    <li>✔ Προσωπικός σύμβουλος</li>
-                </ul>
-                <button class="cta-button" data-plan="Enterprise">Επικοινωνία</button>
+        </section>
+        <!-- Pricing Section -->
+        <section id="pricing">
+            <h2 data-lang="el">Πλάνα Συνδρομών</h2>
+            <h2 data-lang="en" style="display: none">Subscription Plans</h2>
+            <div>
+                <stripe-pricing-table pricing-table-id="prctbl_1QyAyJAXVWdBJUc4PvNVSIk6" publishable-key="pk_test_CuPjQZnAe5x2qcLYaWRzDb39"></stripe-pricing-table>
+            </div>
+            <div class="pricing-container">
+                <div class="plan">
+                    <h3 data-lang="el">Βασικό</h3>
+                    <h3 data-lang="en" style="display: none">Basic</h3>
+                    <p class="price" data-lang="el">Δωρεάν</p>
+                    <p class="price" data-lang="en" style="display: none">Free</p>
+                    <ul>
+                        <li data-lang="el">✔ Διαχείριση βασικών δεδομένων</li>
+                        <li data-lang="en" style="display: none">
+                            ✔ Basic data management
+                        </li>
+                        <li data-lang="el">✔ Πρόσβαση μέσω web</li>
+                        <li data-lang="en" style="display: none">✔ Web access</li>
+                        <li data-lang="el">✖ Χωρίς advanced reports</li>
+                        <li data-lang="en" style="display: none">✖ No advanced reports</li>
+                    </ul>
+                    <button class="cta-button" data-lang="el">Ξεκινήστε</button>
+                    <button class="cta-button" data-lang="en" style="display: none">
+                        Get Started
+                    </button>
+                </div>
+                <div class="plan popular">
+                    <h3 data-lang="el">Επαγγελματικό</h3>
+                    <h3 data-lang="en" style="display: none">Professional</h3>
+                    <p class="price" data-lang="el">€19/μήνα</p>
+                    <p class="price" data-lang="en" style="display: none">€19/month</p>
+                    <ul>
+                        <li data-lang="el">✔ Όλα από το βασικό</li>
+                        <li data-lang="en" style="display: none">
+                            ✔ Everything from Basic
+                        </li>
+                        <li data-lang="el">✔ Αναλυτικά reports</li>
+                        <li data-lang="en" style="display: none">✔ Detailed reports</li>
+                        <li data-lang="el">✔ Υποστήριξη πελατών</li>
+                        <li data-lang="en" style="display: none">✔ Customer support</li>
+                    </ul>
+                    <button class="cta-button" data-lang="el">Επιλογή</button>
+                    <button class="cta-button" data-lang="en" style="display: none">
+                        Choose
+                    </button>
+                </div>
+                <div class="plan">
+                    <h3 data-lang="el">Enterprise</h3>
+                    <h3 data-lang="en" style="display: none">Enterprise</h3>
+                    <p class="price" data-lang="el">Επικοινωνήστε μαζί μας</p>
+                    <p class="price" data-lang="en" style="display: none">Contact us</p>
+                    <ul>
+                        <li data-lang="el">✔ Προσαρμοσμένες λύσεις</li>
+                        <li data-lang="en" style="display: none">✔ Custom solutions</li>
+                        <li data-lang="el">✔ API πρόσβαση</li>
+                        <li data-lang="en" style="display: none">✔ API access</li>
+                        <li data-lang="el">✔ Προσωπικός σύμβουλος</li>
+                        <li data-lang="en" style="display: none">✔ Personal consultant</li>
+                    </ul>
+                    <button class="cta-button" data-lang="el">Επικοινωνία</button>
+                    <button class="cta-button" data-lang="en" style="display: none">
+                        Contact
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Modal (Pop-up) για εγγραφή -->
+        <div id="signup-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 data-lang="el">
+                    Εγγραφή στο
+                    <span id="selected-plan"></span>
+                    Πλάνο
+                </h2>
+                <h2 data-lang="en" style="display: none">
+                    Sign up for the
+                    <span id="selected-plan"></span>
+                    Plan
+                </h2>
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Όνομα"
+                        data-lang="el"
+                        required
+                    >
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        data-lang="en"
+                        style="display: none"
+                        required
+                    >
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit" data-lang="el">Εγγραφή</button>
+                    <button type="submit" data-lang="en" style="display: none">
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 data-lang="el">Επικοινωνία</h2>
+            <h2 data-lang="en" style="display: none">Contact</h2>
+            <div class="contact-container">
+                <!-- Στήλη με τη φόρμα -->
+                <div class="contact-form">
+                    <h3 data-lang="el">Στείλτε μας μήνυμα</h3>
+                    <h3 data-lang="en" style="display: none">Send us a message</h3>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Όνομα"
+                            data-lang="el"
+                            required
+                        >
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            data-lang="en"
+                            style="display: none"
+                            required
+                        >
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Το μήνυμά σας" data-lang="el" required></textarea>
+                        <textarea
+                            placeholder="Your message"
+                            data-lang="en"
+                            style="display: none"
+                            required
+                        ></textarea>
+                        <button type="submit" data-lang="el">Αποστολή</button>
+                        <button type="submit" data-lang="en" style="display: none">
+                            Send
+                        </button>
+                    </form>
+                </div>
+                <!-- Στήλη με τα στοιχεία της εταιρείας -->
+                <div class="contact-info">
+                    <h3 data-lang="el">Στοιχεία επικοινωνίας</h3>
+                    <h3 data-lang="en" style="display: none">Contact Information</h3>
+                    <!-- <p data-lang="el">
+            <strong>📍 Διεύθυνση:</strong> Οδός Παράδειγμα 123, Αθήνα
+          </p>
+          <p data-lang="en" style="display: none">
+            <strong>📍 Address:</strong> Example Street 123, Athens
+          </p>
+          <p data-lang="el"><strong>📞 Τηλέφωνο:</strong> +30 210 123 4567</p>
+          <p data-lang="en" style="display: none">
+            <strong>📞 Phone:</strong> +30 210 123 4567
+          </p> -->
+                    <p data-lang="el"></p>
+                    <strong>✉ Email:</strong>
+                    <a href="mailto:info@gaialogica.gr">info@gaialogica.gr</a>
+                </p>
+                <p data-lang="en" style="display: none">
+                    <strong>✉ Email:</strong>
+                    <a href="mailto:info@gaialogica.gr">info@gaialogica.gr</a>
+                </p>
+                <!-- <p data-lang="el">
+            <strong>🕒 Ώρες λειτουργίας:</strong> Δευ-Παρ, 09:00 - 17:00
+          </p>
+          <p data-lang="en" style="display: none">
+            <strong>🕒 Business Hours:</strong> Mon-Fri, 09:00 - 17:00
+          </p> -->
             </div>
         </div>
     </section>
-
-    <!-- Modal (Pop-up) για εγγραφή -->
-    <div id="signup-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Εγγραφή στο <span id="selected-plan"></span> Πλάνο</h2>
-            <form>
-                <input type="text" placeholder="Όνομα" required>
-                <input type="email" placeholder="Email" required>
-                <button type="submit">Εγγραφή</button>
-            </form>
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h2 data-lang="el">Συχνές Ερωτήσεις</h2>
+        <h2 data-lang="en" style="display: none">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" data-lang="el">
+                    Πώς μπορώ να εγγραφώ στην πλατφόρμα;
+                    <span class="arrow">▼</span>
+                </button>
+                <button class="faq-question" data-lang="en" style="display: none">
+                    How can I sign up for the platform?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer" data-lang="el">
+                    <p data-lang="el">
+                        Μπορείτε να εγγραφείτε επιλέγοντας το πακέτο που θέλετε από την ενότητα τιμολόγησης.
+                    </p>
+                </div>
+                <div class="faq-answer" data-lang="en" style="display: none">
+                    <p data-lang="en">
+                        You can sign up by selecting the package you want from the pricing section.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" data-lang="el">
+                Η εφαρμογή είναι συμβατή με κινητά και tablet;
+                <span class="arrow">▼</span>
+            </button>
+            <button class="faq-question" data-lang="en" style="display: none">
+                Is the application compatible with mobile phones and tablets?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer" data-lang="el">
+                <p data-lang="el">
+                    Ναι, η εφαρμογή είναι πλήρως responsive και λειτουργεί σε κινητά,
+              tablet και υπολογιστές.
+                </p>
+            </div>
+            <div class="faq-answer" data-lang="en" style="display: none">
+                <p data-lang="en">
+                    Yes, the application is fully responsive and works on mobile
+              phones, tablets, and computers.
+                </p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" data-lang="el">
+                Προσφέρετε υποστήριξη πελατών;
+                <span class="arrow">▼</span>
+            </button>
+            <button class="faq-question" data-lang="en" style="display: none">
+                Do you offer customer support?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer" data-lang="el">
+                <p data-lang="el">
+                    Ναι, η ομάδα μας είναι διαθέσιμη μέσω email στο info@gaialogica.com.
+                </p>
+            </div>
+            <div class="faq-answer" data-lang="en" style="display: none">
+                <p data-lang="en"></p>
+                Yes, our team is available via email at info@gaialogica.com.
+            </p>
         </div>
     </div>
-
-    <!-- Contact Section -->
-<section id="contact">
-    <h2>Επικοινωνία</h2>
-    <div class="contact-container">
-        <!-- Στήλη με τη φόρμα -->
-        <div class="contact-form">
-            <h3>Στείλτε μας μήνυμα</h3>
-            <form>
-                <input type="text" placeholder="Όνομα" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Μήνυμά σας" required></textarea>
-                <button type="submit">Αποστολή</button>
-            </form>
+    <div class="faq-item">
+        <button class="faq-question" data-lang="el">
+            Μπορώ να δοκιμάσω δωρεάν την υπηρεσία;
+            <span class="arrow">▼</span>
+        </button>
+        <button class="faq-question" data-lang="en" style="display: none">
+            Can I try the service for free?
+            <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer" data-lang="el">
+            <p data-lang="el">
+                Ναι, προσφέρουμε δωρεάν δοκιμή για 90 ημέρες, ώστε να εξερευνήσετε
+              όλες τις δυνατότητες της εφαρμογής.
+            </p>
         </div>
-        
-        <!-- Στήλη με τα στοιχεία της εταιρείας -->
-        <div class="contact-info">
-            <h3>Στοιχεία επικοινωνίας</h3>
-            <p><strong>📍 Διεύθυνση:</strong> Οδός Παράδειγμα 123, Αθήνα</p>
-            <p><strong>📞 Τηλέφωνο:</strong> +30 210 123 4567</p>
-            <p><strong>✉ Email:</strong> info@gaialogica.gr</p>
-            <p><strong>🕒 Ώρες λειτουργίας:</strong> Δευ-Παρ, 09:00 - 17:00</p>
+        <div class="faq-answer" data-lang="en" style="display: none">
+            <p data-lang="en">
+                Yes, we offer a free trial for 90 days so you can explore all the
+              features of the application.
+            </p>
         </div>
     </div>
+</div>
 </section>
-<!-- FAQ Section -->
-<section id="faq">
-    <h2>Συχνές Ερωτήσεις</h2>
-    <div class="faq-container">
-        
-        <div class="faq-item">
-            <button class="faq-question">Πώς μπορώ να εγγραφώ στην πλατφόρμα; <span class="arrow">▼</span></button>
-            <div class="faq-answer">
-                <p>Μπορείτε να εγγραφείτε πατώντας το κουμπί "Εγγραφή" και συμπληρώνοντας τη φόρμα με τα στοιχεία σας.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">Η εφαρμογή είναι συμβατή με κινητά και tablet; <span class="arrow">▼</span></button>
-            <div class="faq-answer">
-                <p>Ναι, η εφαρμογή είναι πλήρως responsive και λειτουργεί σε κινητά, tablet και υπολογιστές.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">Προσφέρετε υποστήριξη πελατών; <span class="arrow">▼</span></button>
-            <div class="faq-answer">
-                <p>Ναι, η ομάδα μας είναι διαθέσιμη μέσω email και τηλεφώνου από Δευτέρα έως Παρασκευή, 09:00 - 17:00.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">Μπορώ να δοκιμάσω δωρεάν την υπηρεσία; <span class="arrow">▼</span></button>
-            <div class="faq-answer">
-                <p>Ναι, προσφέρουμε δωρεάν δοκιμή για 14 ημέρες, ώστε να εξερευνήσετε όλες τις δυνατότητες της εφαρμογής.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-    <footer>
-        <p>© 2025 GaiaLogica. Όλα τα δικαιώματα κατοχυρωμένα.</p>
-    </footer>
+<footer>
+    <p data-lang="el">© 2025 GaiaLogica. Όλα τα δικαιώματα κατοχυρωμένα.</p>
+    <p data-lang="en" style="display: none">
+        © 2025 GaiaLogica. All rights reserved.
+    </p>
+</footer>
 </body>
 <script src="scripts.js"></script>
 <script type="application/ld+json">
@@ -198,6 +512,5 @@
         }
       ]
     }
-    </script>
-    
+</script>
 </html>

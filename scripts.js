@@ -1,6 +1,10 @@
+document.addEventListener("DOMContentLoaded", function() {
+    document.documentElement.lang
+
+    
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
-    alert("Το μήνυμα σας στάλθηκε επιτυχώς! Θα επικοινωνήσουμε σύντομα.");
+    alert("Message sent successfully! We will get back to you soon.");
 });
 
 // Παίρνουμε τα CTA κουμπιά και το modal
@@ -30,10 +34,9 @@ window.addEventListener("click", (event) => {
     }
 });
 const faqButtons = document.querySelectorAll(".faq-question");
-
 faqButtons.forEach(button => {
     button.addEventListener("click", () => {
-        const answer = button.nextElementSibling;
+        const answer = button.parentElement.querySelector(`.faq-answer[data-lang="${document.documentElement.lang}"]`);
         const arrow = button.querySelector(".arrow");
 
         if (answer.classList.contains("active")) {
@@ -43,16 +46,17 @@ faqButtons.forEach(button => {
             }, 300);
             arrow.style.transform = "rotate(0deg)";
         } else {
-            // Κλείνει όλα τα ανοιχτά FAQ πριν ανοίξει το νέο
-            document.querySelectorAll(".faq-answer").forEach(ans => {
+            // Close all open FAQ answers for the current locale
+            document.querySelectorAll(`.faq-answer[data-lang="${document.documentElement.lang}"]`).forEach(ans => {
                 ans.classList.remove("active");
-                
-                    ans.style.display = "none";
-                    
+                ans.style.display = "none";
             });
 
-            document.querySelectorAll(".arrow").forEach(arr => arr.style.transform = "rotate(0deg)");
+            document.querySelectorAll(".faq-question .arrow").forEach(arr => {
+                arr.style.transform = "rotate(0deg)";
+            });
 
+            // Open the selected FAQ answer
             answer.style.display = "block";
             setTimeout(() => {
                 answer.classList.add("active");
@@ -60,4 +64,14 @@ faqButtons.forEach(button => {
             arrow.style.transform = "rotate(180deg)";
         }
     });
+});
+
+    // Add "coming-soon" label to specific services
+    const services = document.querySelectorAll(".service");
+    services.forEach(service => {
+        if (service.classList.contains("coming-soon")) {
+            // Additional logic can be added here if needed
+        }
+    });
+
 });

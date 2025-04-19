@@ -4,19 +4,20 @@ body {
     padding: 0;
     background-color: #f4f1ea;
     color: #333;
+    overflow-x: hidden;;
 }
 
 header {
     display: flex;
     justify-content: flex-end; /* Align items to the start */
     align-items: center;
-    background: #4CAF50;
+    background: #F4F1EA;
     padding: 15px;
     position: relative; /* Add relative positioning */
 }
 
 .logo {
-    width: 8.5em;
+    width: 7.5em;
     position: absolute; /* Position the logo absolutely */
     left: 15px; /* Move to the left with a fixed margin */
     transform: none; /* Remove centering adjustment */
@@ -34,14 +35,14 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
+    color: #254122;
     font-weight: bold;
 }
 
 .hero {
     text-align: center;
     padding: 50px 20px;
-    background: url('./hero.webp') no-repeat center/cover;
+    background: url('./assets/hero2.jpg') no-repeat center/cover;
     color: white;
 }
 
@@ -49,20 +50,44 @@ nav ul li a {
     font-size: 2.5em;
 }
 
-.btn {
-    background: #8B5A2B;
+
+.learn-more {
+    /* background: #8B5A2B; */
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     display: inline-block;
     margin-top: 10px;
     border-radius: 5px;
+    border-color: white;
+    border: solid;
+    margin: 0 auto;
+    width: max-content;
 }
 
 #services, #contact {
     padding: 50px 20px;
     text-align: center;
 }
+
+.services-table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Maximum of 4 columns per row */
+    gap: 20px; /* Space between grid items */
+    padding: 10px;
+}
+
+@media (max-width: 1200px) {
+    .services-table {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for smaller screens */
+    }
+}
+
+.services-table .service {
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
 #contact {
     text-align: center;
     padding: 50px 20px;
@@ -117,21 +142,60 @@ nav ul li a {
     .contact-info p {
         text-align: center;  /* Στοίχιση στο κέντρο για mobile */
     }
-
-    nav{
+    
+    nav {
         display: none;
     }
 }
 
+.mobile-menu {
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    padding: 25px 0;
+}
+.mobile-menu .language-toggle button{
+    padding: 0;
+}
+
+.mobile-menu .login-signup,
+.mobile-menu .language-toggle{
+    background: #254122;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 .1em;
+}
 
 .service {
     background: white;
     margin: 20px auto;
-    padding: 20px;
+    padding: 35px 20px 10px;
     width: 80%;
     max-width: 400px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service.coming-soon {
+    position: relative;
+}
+
+.service.coming-soon::after {
+    content: "Coming Soon";
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ff0000;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 form input, form textarea {
@@ -142,11 +206,12 @@ form input, form textarea {
 }
 
 button {
-    background: #4CAF50;
+    background: #254122;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 footer {
@@ -158,11 +223,12 @@ footer {
 #pricing {
     text-align: center;
     padding: 50px 20px;
-    background: #f4f1ea;
+    background: #254122;
+    color: #fff;
 }
 
 .pricing-container {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
@@ -182,7 +248,7 @@ footer {
 }
 
 .plan h3 {
-    color: #4CAF50;
+    color: #254122;
     font-size: 1.5em;
 }
 
@@ -202,7 +268,7 @@ footer {
 }
 
 button {
-    background: #4CAF50;
+    background: #254122;
     color: white;
     border: none;
     padding: 10px;
@@ -211,7 +277,7 @@ button {
 }
 
 .popular {
-    border: 2px solid #4CAF50;
+    border: 2px solid #254122;
 }
 @media (max-width: 768px) {
     .pricing-container {
@@ -255,7 +321,7 @@ button {
 }
 
 .faq-container {
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: auto;
 }
 
@@ -273,7 +339,7 @@ button {
 
 .faq-question {
     width: 100%;
-    background: #4CAF50;
+    background: #254122;
     color: white;
     padding: 15px;
     font-size: 18px;
@@ -288,7 +354,7 @@ button {
 }
 
 .faq-question:hover {
-    background: #45a049;
+    background: #254122;
 }
 
 .faq-answer {
@@ -322,10 +388,15 @@ button {
     }
 
     header{
-        padding: 40px;
+        padding: 15px 10px;
     }
 
     .logo{
         width: 7em;
+        left: 5px;
     }
+}
+
+#iframe * .PricingTable{
+    display: none;
 }
