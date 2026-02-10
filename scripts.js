@@ -1,7 +1,56 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.documentElement.lang
 
+    // Scarcity counter logic
+    function updateSlotCounter() {
+        const counterEl = document.getElementById('slot-counter-el');
+        const counterEn = document.getElementById('slot-counter-en');
+        
+        // Check if we have a stored count for today
+        const today = new Date().toDateString();
+        const storedData = sessionStorage.getItem('slotCounterData');
+        
+        let count = 12; // Default value
+        
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            if (data.date === today) {
+                count = Math.max(1, data.count); // Never go below 1
+            }
+        }
+        
+        if (counterEl) counterEl.textContent = count;
+        if (counterEn) counterEn.textContent = count;
+        
+        // Save the initial count
+        sessionStorage.setItem('slotCounterData', JSON.stringify({ date: today, count: count }));
+    }
     
+    // Decrement counter when CTA is clicked
+    document.querySelectorAll('.cta-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            const today = new Date().toDateString();
+            const storedData = sessionStorage.getItem('slotCounterData');
+            
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                if (data.date === today && data.count > 1) {
+                    data.count -= 1;
+                    sessionStorage.setItem('slotCounterData', JSON.stringify(data));
+                    
+                    const counterEl = document.getElementById('slot-counter-el');
+                    const counterEn = document.getElementById('slot-counter-en');
+                    if (counterEl) counterEl.textContent = data.count;
+                    if (counterEn) counterEn.textContent = data.count;
+                }
+            }
+        });
+    });
+    
+    // Initialize counter
+    updateSlotCounter();
+    
+
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
     alert("Message sent successfully! We will get back to you soon.");
