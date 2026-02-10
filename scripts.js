@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.documentElement.lang
-
     // Scarcity counter logic
     function updateSlotCounter() {
         const counterEl = document.getElementById('slot-counter-el');
