@@ -31,26 +31,32 @@
         });
       function toggleLanguage(lang) {
         document.documentElement.lang = lang;
+        
+        // Handle language toggle buttons separately
+        document.querySelectorAll(".language-toggle button").forEach((btn) => {
+            if (btn.dataset.lang === lang) {
+                btn.style.display = "none"; // Hide the current language button
+            } else {
+                btn.style.display = ""; // Show the other language button
+            }
+        });
+        
+        // Handle all other elements with data-lang
         document.querySelectorAll("[data-lang]").forEach((el) => {
+            // Skip language toggle buttons (already handled above)
+            if (el.closest(".language-toggle")) {
+                return;
+            }
 
             if (el.className === "faq-question"){
                 el.style.display = el.dataset.lang === lang ? "flex" : "none";
             }
-            else if (el.parentElement.className === "language-toggle"){
-                if (el.dataset.lang === lang){
-                    el.style.display = "";
-                }
-                else{
-                    el.style.display = "none";
-                }
-            }
             else{
                 el.style.display = el.dataset.lang === lang ? "block" : "none";
             }
-
         });
 
-document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.display = "none"; });
+        document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.display = "none"; });
       }
 
       function handleContactFormSubmission(event) {
@@ -154,11 +160,11 @@ document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.displa
             <div class="mobile-menu">
                 <!-- Language Toggle -->
                 <div class="language-toggle">
-                    <button data-lang="en" onclick="toggleLanguage('el')" title="Ελληνικά">
-                        🇬🇷
+                    <button data-lang="en" onclick="toggleLanguage('en')" title="English" style="background-color: transparent;">
+                        <img src="./assets/usa.png" alt="English" class="flag-icon">
                     </button>
-                    <button data-lang="el" onclick="toggleLanguage('en')" title="English">
-                        🇺🇸
+                    <button data-lang="el" onclick="toggleLanguage('el')" title="Ελληνικά" style="background-color: transparent;">
+                        <img src="./assets/greek.png" alt="Ελληνικά" class="flag-icon">
                     </button>
                 </div>
                 <a href="#pricing" class="login-signup" data-lang="el">Εγγραφή</a>

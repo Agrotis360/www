@@ -188,7 +188,7 @@ h4 {
 .mobile-menu {
     display: flex;
     justify-content: center;
-    align-items:end;
+    align-items: center;
     padding: 25px 0;
 }
 .mobile-menu .language-toggle button{
@@ -197,13 +197,17 @@ h4 {
 
 .mobile-menu .login-signup,
 .mobile-menu .language-toggle{
-    background: #254122;
-    color: white;
     padding: 10px 10px;
-    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     margin: 0 .1em;
+}
+
+.mobile-menu .login-signup{
+    background: #254122;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
 }
 
 .service {
@@ -502,4 +506,11 @@ button {
 
 .social-icons a[aria-label="Instagram"] i {
     color: #E1306C !important;
+}
+
+.flag-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
 }
