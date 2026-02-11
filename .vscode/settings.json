@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python -c \"from pathlib import Path; p=Path\\(r'C:\\\\\\\\Users\\\\\\\\tasos\\\\\\\\source\\\\\\\\repos\\\\\\\\www\\\\\\\\styles\\.css'\\); text=p\\.read_text\\(encoding='utf-8'\\); print\\('opens',text\\.count\\('\\{'\\),'closes',text\\.count\\('\\}'\\),'diff',text\\.count\\('\\{'\\)-text\\.count\\('\\}'\\)\\); stack=\\[\\]; \n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

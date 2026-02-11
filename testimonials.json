@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Nikos P.",
+    "region": "Thessaly",
+    "farmSizeHa": 2,
+    "metric": "+13% yield",
+    "quote": "Είδα τι γίνεται στο χωράφι πιο γρήγορα — και δεν κυνηγούσα τα πάντα τελευταία στιγμή.",
+    "lang": "el"
+  },
+  {
+    "name": "Maria K.",
+    "region": "Peloponnese",
+    "farmSizeHa": 8,
+    "metric": "-18% sprays",
+    "quote": "Οι ειδοποιήσεις μας γλίτωσαν άσκοπες εφαρμογές. Πιο ήρεμα, πιο μεθοδικά.",
+    "lang": "el"
+  },
+  {
+    "name": "Giorgos D.",
+    "region": "Macedonia",
+    "farmSizeHa": 25,
+    "metric": "+11% yield",
+    "quote": "Το dashboard έβαλε τάξη σε έξοδα/έσοδα. Επιτέλους βλέπω την εικόνα.",
+    "lang": "el"
+  },
+  {
+    "name": "Nikos P.",
+    "region": "Thessaly",
+    "farmSizeHa": 2,
+    "metric": "+13% yield",
+    "quote": "I saw what was happening in the field faster — no more last-minute firefighting.",
+    "lang": "en"
+  },
+  {
+    "name": "Maria K.",
+    "region": "Peloponnese",
+    "farmSizeHa": 8,
+    "metric": "-18% sprays",
+    "quote": "Alerts helped us avoid unnecessary applications. Calmer, more systematic.",
+    "lang": "en"
+  },
+  {
+    "name": "Giorgos D.",
+    "region": "Macedonia",
+    "farmSizeHa": 25,
+    "metric": "+11% yield",
+    "quote": "The dashboard organized costs and revenue. I finally see the whole picture.",
+    "lang": "en"
+  }
+]
