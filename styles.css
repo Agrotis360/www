@@ -120,7 +120,7 @@ nav ul li a {
 }
 
 .contact-info p {
-    text-align: left;
+    text-align: center;
     line-height: 1.6;
 }
 
@@ -143,6 +143,12 @@ nav ul li a {
     nav {
         display: none;
     }
+}
+
+h4 {
+    color: #4CAF50;
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
 .mobile-menu {
@@ -401,4 +407,46 @@ button {
 
 #iframe * .PricingTable{
     display: none;
+}
+
+/* Social Media Styling */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    background-color: #e0e0e0;
+}
+
+.social-icons a i {
+    font-size: 18px !important;
+    color: inherit !important;
+}
+
+.social-icons a[aria-label="Facebook"] i {
+    color: #4267B2 !important;
+}
+
+.social-icons a[aria-label="Instagram"] i {
+    color: #E1306C !important;
 }

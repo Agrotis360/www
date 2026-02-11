@@ -19,6 +19,7 @@
         >
         <link rel="manifest" href="./assets/favico/site.webmanifest">
         <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
         <script>
         window.document.addEventListener("DOMContentLoaded", function () {
@@ -49,6 +50,69 @@
         });
 
 document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.display = "none"; });
+      }
+
+      function handleContactFormSubmission(event) {
+        event.preventDefault();
+        
+        const currentLang = document.documentElement.lang;
+        const form = event.target;
+        
+        // Get the visible fields based on current language
+        const nameField = form.querySelector(`input[type="text"][data-lang="${currentLang}"]`);
+        const emailField = form.querySelector('input[type="email"]');
+        const messageField = form.querySelector(`textarea[data-lang="${currentLang}"]`);
+        
+        // Validate only visible fields
+        if (!nameField || !nameField.value.trim()) {
+          alert(currentLang === 'el' ? 'Παρακαλώ εισάγετε το όνομά σας' : 'Please enter your name');
+          if (nameField) nameField.focus();
+          return;
+        }
+        
+        if (!emailField || !emailField.value.trim()) {
+          alert(currentLang === 'el' ? 'Παρακαλώ εισάγετε το email σας' : 'Please enter your email');
+          if (emailField) emailField.focus();
+          return;
+        }
+        
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailField.value.trim())) {
+          alert(currentLang === 'el' ? 'Παρακαλώ εισάγετε έγκυρο email' : 'Please enter a valid email');
+          emailField.focus();
+          return;
+        }
+        
+        if (!messageField || !messageField.value.trim()) {
+          alert(currentLang === 'el' ? 'Παρακαλώ εισάγετε το μήνυμά σας' : 'Please enter your message');
+          if (messageField) messageField.focus();
+          return;
+        }
+        
+        // Prepare email data
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        const message = messageField.value.trim();
+        
+        const subject = currentLang === 'el' ? 
+          `Επικοινωνία από ${name} - GaiaLogica` : 
+          `Contact from ${name} - GaiaLogica`;
+        
+        const body = currentLang === 'el' ? 
+          `Όνομα: ${name}\nEmail: ${email}\n\nΜήνυμα:\n${message}` : 
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        
+        // Create mailto link
+        const mailtoLink = `mailto:info@gaialogica.gr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Reset form after a short delay
+        setTimeout(() => {
+          form.reset();
+        }, 1000);
       }
         </script>
     </head>
@@ -89,8 +153,12 @@ document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.displa
             <div class="mobile-menu">
                 <!-- Language Toggle -->
                 <div class="language-toggle">
-                    <button data-lang="en" onclick="toggleLanguage('el')">Ελληνικά</button>
-                    <button data-lang="el" onclick="toggleLanguage('en')">English</button>
+                    <button data-lang="en" onclick="toggleLanguage('el')" title="Ελληνικά">
+                        🇬🇷
+                    </button>
+                    <button data-lang="el" onclick="toggleLanguage('en')" title="English">
+                        🇺🇸
+                    </button>
                 </div>
                 <a href="#pricing" class="login-signup" data-lang="el">Εγγραφή</a>
                 <a
@@ -314,27 +382,24 @@ document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.displa
                 <div class="contact-form">
                     <h3 data-lang="el">Στείλτε μας μήνυμα</h3>
                     <h3 data-lang="en" style="display: none">Send us a message</h3>
-                    <form>
+                    <form onsubmit="handleContactFormSubmission(event)">
                         <input
                             type="text"
                             placeholder="Όνομα"
                             data-lang="el"
-                            required
                         >
                         <input
                             type="text"
                             placeholder="Name"
                             data-lang="en"
                             style="display: none"
-                            required
                         >
                         <input type="email" placeholder="Email" required>
-                        <textarea placeholder="Το μήνυμά σας" data-lang="el" required></textarea>
+                        <textarea placeholder="Το μήνυμά σας" data-lang="el"></textarea>
                         <textarea
                             placeholder="Your message"
                             data-lang="en"
                             style="display: none"
-                            required
                         ></textarea>
                         <button type="submit" data-lang="el">Αποστολή</button>
                         <button type="submit" data-lang="en" style="display: none">
@@ -370,6 +435,19 @@ document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.displa
           <p data-lang="en" style="display: none">
             <strong>🕒 Business Hours:</strong> Mon-Fri, 09:00 - 17:00
           </p> -->
+                    
+                    <div class="social-media">
+                        <h4 data-lang="el">Ακολουθήστε μας</h4>
+                        <h4 data-lang="en" style="display: none">Follow us</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/people/GaiaLogica/61575280366909/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com/gaialogica" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -513,4 +591,5 @@ document.querySelectorAll(".faq-answer").forEach(answer => { answer.style.displa
       ]
     }
 </script>
+</html>
 </html>
